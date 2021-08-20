@@ -38,7 +38,7 @@ def frame_to_array(dataframe):
     return entity_id, event_time, entity_state
 
 
-def datetime_to_float(dataframe, time_column='Time'):
+def datetime_to_float(dataframe_in, time_column='Time'):
     """datetime_to_float() converts dates from string format to the canonical float format
 
     :param time_column: the column label of the observation times
@@ -50,6 +50,7 @@ def datetime_to_float(dataframe, time_column='Time'):
 
     """
 
+    dataframe = dataframe_in.copy()
     dataframe[time_column] = dataframe[time_column].apply(
         lambda x: (pd.to_datetime(x)))
 
